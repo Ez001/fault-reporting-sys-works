@@ -23,10 +23,11 @@
 		$id = $_POST['refaulted_fault_id'];
 		$engineer_id = $_POST['edit_engineer_id'];
 		$status = $_POST['edit_status'];
+		$feed_back = $_POST['edit_feed_back'];
 
-		if ( $id && $engineer_id && $status ) 
+		if ( $id && $engineer_id && $status && $feed_back ) 
 		{
-			$dt_01 = [ $status, $engineer_id, $id ];
+			$dt_01 = [ $status, $engineer_id, $feed_back, $id ];
 			$update_reported_fault = $report_fault->updateById( $dt_01 );
 
 			if ( $update_reported_fault ) 

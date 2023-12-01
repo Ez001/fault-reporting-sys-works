@@ -36,10 +36,26 @@
 
 		function updateById( array $dt )
 		{
-			$sql = "UPDATE $this->table SET `status` = ?, `engineer_id` = ? WHERE id = ?";
+			$sql = "UPDATE $this->table SET `status` = ?, `engineer_id` = ?, `feed_back` = ? WHERE id = ?";
 			$res = $this->runQuery_2( $sql, $dt );
 			
 			return $res ?? [];
+		}
+
+		function getCount( array $dt )
+		{
+			$sql = "SELECT COUNT( id ) AS total FROM $this->table";
+			$res = $this->fetchData( $sql, $dt );
+
+			return $res['total'] ?? [];
+		}
+
+		function getCountByStatus( array $dt )
+		{
+			$sql = "SELECT COUNT( id ) AS total FROM $this->table WHERE status = ?";
+			$res = $this->fetchData( $sql, $dt );
+
+			return $res['total'] ?? [];
 		}
 
 

@@ -5,4 +5,5 @@ $( document ).on( 'click', '.edit_reported_fault', ( e ) => {
    $( '#refaulted_fault_id' ).val( dt_set.id );
    $( '#edit_status' ).val( dt_set.status );
    $( '#edit_engineer_id' ).val( dt_set.engineer_id );
+   $( '#edit_feed_back' ).val( dt_set.feed_back );
 });

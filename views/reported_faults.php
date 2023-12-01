@@ -22,7 +22,6 @@
                   </div>
                   <?php
                      echo $web_app->showAlert( $msg, true );
-      
                      if ( $r_fault_arr ) 
                      {
                   ?>
@@ -37,6 +36,7 @@
                               <th>Description</th>
                               <th>Engineer</th>
                               <th>Status</th>
+                              <th>Feed Back</th>
                               <th>Action</th>
                            </tr>
                         </thead>
@@ -48,6 +48,7 @@
                               <th>Description</th>
                               <th>Engineer</th>
                               <th>Status</th>
+                              <th>Feed Back</th>
                               <th>Action</th>
                            </tr>
                         </tfoot>
@@ -68,7 +69,9 @@
                            $engineer_dt = $engr->getById( [ $engineer_id ] );
                            $engineer = $web_app->fullName( $engineer_dt );
                            $status = $r_fault_data[ 'status' ];
+                           $feed_back = $r_fault_data[ 'feed_back' ];
                            $btn_state = $status == 'Completed' ? 'd-none' : '';
+                           $status_x = $web_app->showStatusType( $status );
 
                            $sn++;
                            
@@ -78,9 +81,10 @@
                               <td class='fw-light'> $fault </td>
                               <td class='fw-light'> $description </td>                              
                               <td class='fw-light'> $engineer </td>                              
-                              <td class='fw-light'> $status </td>
+                              <td class='fw-light'> $status_x </td>
+                              <td class='fw-light'> $feed_back </td>
                               <td class='fw-light'>
-                                 <button type='button' class='btn btn-success $btn_state edit_reported_fault mb-2' id='edit_reported_fault_btn$id' data-bs-toggle='modal' data-bs-target='#editReportedFaultModal' data-id='$id' data-status='$status' data-engineer_id='$engineer_id' title='Edit'><label for='edit_reported_fault_btn$id' class=''><i class='bi bi-pencil'></i> <span class='d-none d-md-inline'>Update</span></label>
+                                 <button type='button' class='btn btn-success $btn_state edit_reported_fault mb-2' id='edit_reported_fault_btn$id' data-bs-toggle='modal' data-bs-target='#editReportedFaultModal' data-id='$id' data-status='$status' data-engineer_id='$engineer_id' data-feed_back='$feed_back' title='Edit'><label for='edit_reported_fault_btn$id' class=''><i class='bi bi-pencil'></i> <span class='d-none d-md-inline'>Update</span></label>
                                  </button>
                               
                               </td>
@@ -133,6 +137,13 @@
                               <option>Select Status</option>
                               <?= $web_app->loadStatuses() ?>
                            </select>
+                        </div>
+                     </div>
+
+                     <div class="mt-3">
+                        <label for="edit_feed_back" class="fw-bold">Feed Back <span class="text-danger">*</span></label>
+                        <div>
+                           <textarea name="edit_feed_back" id="edit_feed_back" class="form-control" placeholder="Enter Feed Back" maxlength="1000" required></textarea>
                         </div>
                      </div>
 
