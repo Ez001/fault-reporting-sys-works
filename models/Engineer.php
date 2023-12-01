@@ -38,6 +38,30 @@
 			return $res ?? [];
 		}
 
+		function loadEngineers( array $data, $sel_id = '' )
+		{
+			$options = '';
+
+			if ( $data ) 
+			{
+				foreach ( $data as $dt ) 
+				{
+					$sel = '';
+					$id = $dt['id'];
+					$full_name = $dt['first_name']. ' ' . $dt['last_name'];
+
+					if ( $sel_id == $id ) 
+					{
+						$sel = 'selected';
+					}
+
+					$options .= "<option value='$id' $sel > $full_name </option>";
+				}
+			}
+
+			return $options;
+		}
+
 
 	}
 

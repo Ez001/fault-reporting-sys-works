@@ -136,7 +136,7 @@
 
 		function loadStatuses( $sel_id = '' )
       {
-         $data_arr = [ 'ACTIVE', 'INACTIVE' ]; 
+         $data_arr = [ 'Pending', 'Completed' ]; 
 
 	      return $this->createOptions( $data_arr, $sel_id );
       }

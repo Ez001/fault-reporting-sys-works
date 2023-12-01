@@ -34,6 +34,15 @@
 			return $res ?? [];
 		}
 
+		function updateById( array $dt )
+		{
+			$sql = "UPDATE $this->table SET `status` = ?, `engineer_id` = ? WHERE id = ?";
+			$res = $this->runQuery_2( $sql, $dt );
+			
+			return $res ?? [];
+		}
+
+
 	}
 
 ?>

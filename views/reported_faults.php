@@ -19,9 +19,6 @@
             <div class="card">
                <div class="card-body">
                   <div class="text-end mb-2 mt-2">
-                     <button type="button" id="add_fault_btn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addFaultModal" title="Add Fault">
-                     <label for="add_fault_btn" class=""><i class="bi bi-plus-lg"></i> <span class="d-none d-md-inline">Add Fault</span></label>
-                     </button>
                   </div>
                   <?php
                      echo $web_app->showAlert( $msg, true );
@@ -71,6 +68,7 @@
                            $engineer_dt = $engr->getById( [ $engineer_id ] );
                            $engineer = $web_app->fullName( $engineer_dt );
                            $status = $r_fault_data[ 'status' ];
+                           $btn_state = $status == 'Completed' ? 'd-none' : '';
 
                            $sn++;
                            
@@ -82,8 +80,7 @@
                               <td class='fw-light'> $engineer </td>                              
                               <td class='fw-light'> $status </td>
                               <td class='fw-light'>
-                                 <td class='fw-light'>
-                                 <button type='button' class='btn btn-success edit_dog mb-2' id='edit_dog_btn$id' data-bs-toggle='modal' data-bs-target='#editDogModal' title='Edit'><label for='edit_dog_btn$id' class=''><i class='bi bi-pencil'></i> <span class='d-none d-md-inline'>Update</span></label>
+                                 <button type='button' class='btn btn-success $btn_state edit_reported_fault mb-2' id='edit_reported_fault_btn$id' data-bs-toggle='modal' data-bs-target='#editReportedFaultModal' data-id='$id' data-status='$status' data-engineer_id='$engineer_id' title='Edit'><label for='edit_reported_fault_btn$id' class=''><i class='bi bi-pencil'></i> <span class='d-none d-md-inline'>Update</span></label>
                                  </button>
                               
                               </td>
@@ -104,3 +101,50 @@
       
    </section>  
 </main><!-- End #main -->
+
+<!-- Start Edit reported_fault Modal-->
+<div class="modal fade" id="editReportedFaultModal" tabindex="-1">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h3 class="modal-title"><strong>Edit Reported Fault</strong></h3>
+            <button type="button" class="btn-close h2" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            <form action="" method="POST">
+               <input type="hidden" name="refaulted_fault_id" id="refaulted_fault_id">
+               <div class="card p-3">
+                  <h5>Please, fill in the details below!</h5>
+                  <div class="row">  
+                     <div class="form-group col-md-6  mt-3">
+                        <label class="fw-bold" for="edit_engineer_id">Engineer <span class="text-danger">*</span></label>
+                        <div>
+                           <select name="edit_engineer_id" id="edit_engineer_id" class="form-select">
+                              <option>Select Engineer</option>
+                              <?= $engr->loadEngineers( $engr_arr ) ?>
+                           </select>
+                        </div>
+                     </div>
+
+                     <div class="form-group col-md-6  mt-3">
+                        <label class="fw-bold" for="edit_status">Status <span class="text-danger">*</span></label>
+                        <div>
+                           <select name="edit_status" id="edit_status" class="form-select">
+                              <option>Select Status</option>
+                              <?= $web_app->loadStatuses() ?>
+                           </select>
+                        </div>
+                     </div>
+
+                     <div class="text-center mt-3">
+                        <button type="submit" name="edit_btn" id="edit_btn" class="btn btn-success" >Save</button>
+                     </div>
+
+                   </div>
+                </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- End Edit Dog Modal-->
