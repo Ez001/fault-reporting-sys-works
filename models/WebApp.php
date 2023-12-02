@@ -206,21 +206,21 @@
 			return $status_type_x;
       }
 
-      function showRepaymentStatusType( $repay_type )
+      function showReviewStatusType( $review_type )
       {
-      	$repay_type_x = '';
+      	$review_type_x = '';
 
-      	if( $repay_type )
+      	if( $review_type )
       	{
-	      	$repay_type_x = "<span class='badge bg-info'> $repay_type </span>";
+	      	$review_type_x = "<span class='badge bg-danger'> $review_type </span>";
 
-				if ( $repay_type == 'Full' ) 
+				if ( $review_type == 'Satisfied' ) 
 				{
-					$repay_type_x = "<span class='badge bg-success'> $repay_type </span>";
+					$review_type_x = "<span class='badge bg-success'> $review_type </span>";
 				}
 			}
 
-			return $repay_type_x;
+			return $review_type_x;
       }
 
       function showPaymentStatusType( $payment_type )

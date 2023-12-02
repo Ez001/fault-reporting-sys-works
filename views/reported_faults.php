@@ -36,6 +36,7 @@
                               <th>Description</th>
                               <th>Engineer</th>
                               <th>Status</th>
+                              <th>Review Status</th>
                               <th>Feed Back</th>
                               <th>Action</th>
                            </tr>
@@ -48,6 +49,7 @@
                               <th>Description</th>
                               <th>Engineer</th>
                               <th>Status</th>
+                              <th>Review Status</th>
                               <th>Feed Back</th>
                               <th>Action</th>
                            </tr>
@@ -72,6 +74,9 @@
                            $feed_back = $r_fault_data[ 'feed_back' ];
                            $btn_state = $status == 'Completed' ? 'd-none' : '';
                            $status_x = $web_app->showStatusType( $status );
+                           $review_status = $r_fault_data[ 'review_status' ];
+                           $review_status = $web_app->showReviewStatusType( $review_status );
+
 
                            $sn++;
                            
@@ -82,6 +87,7 @@
                               <td class='fw-light'> $description </td>                              
                               <td class='fw-light'> $engineer </td>                              
                               <td class='fw-light'> $status_x </td>
+                              <td class='fw-light'> $review_status </td>
                               <td class='fw-light'> $feed_back </td>
                               <td class='fw-light'>
                                  <button type='button' class='btn btn-success $btn_state edit_reported_fault mb-2' id='edit_reported_fault_btn$id' data-bs-toggle='modal' data-bs-target='#editReportedFaultModal' data-id='$id' data-status='$status' data-engineer_id='$engineer_id' data-feed_back='$feed_back' title='Edit'><label for='edit_reported_fault_btn$id' class=''><i class='bi bi-pencil'></i> <span class='d-none d-md-inline'>Update</span></label>
