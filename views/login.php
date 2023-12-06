@@ -8,7 +8,7 @@
 
                   <div class="d-flex justify-content-center py-4">
                      <a href="#" class="logo d-flex align-items-center w-auto">
-                     <img src="assets/img/avatar.png" alt="Logo" >
+                     <img >
                         <span class="h2 d-none d-lg-block">Admin</span>
                      </a>
                   </div><!-- End Logo -->
