@@ -41,6 +41,23 @@
 			
 		}
 	}
+	else if ( isset( $_POST['dt_delete'] ) ) 
+	{
+		ob_clean();
+		$id = $_POST['dt_delete'];
+
+		if ( $report_fault->deleteById( [ $id ] ) ) 
+		{
+			$_SESSION['msg'] = $web_app->showAlertMsg( 'success', 'Reported Fault Deleted!' );
+		}
+		else
+		{
+			$_SESSION['msg'] = $web_app->showAlertMsg( 'danger', 'Sorry, Reported Fault Not Deleted!' );
+		}
+
+		ob_end_flush();
+	}
+
 
 
 	$r_fault_arr = $report_fault->getAll( [ ] );

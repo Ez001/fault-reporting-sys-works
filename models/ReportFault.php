@@ -58,6 +58,14 @@
 			return $res['total'] ?? [];
 		}
 
+		function deleteById( array $dt )
+		{
+			$sql = "DELETE FROM $this->table WHERE id = ?";
+			$res = $this->runQuery_2( $sql, $dt );
+
+			return $res ?? false;
+		}
+
 
 	}
 

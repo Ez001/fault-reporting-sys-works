@@ -92,7 +92,7 @@
                               <td class='fw-light'>
                                  <button type='button' class='btn btn-success $btn_state edit_reported_fault mb-2' id='edit_reported_fault_btn$id' data-bs-toggle='modal' data-bs-target='#editReportedFaultModal' data-id='$id' data-status='$status' data-engineer_id='$engineer_id' data-feed_back='$feed_back' title='Edit'><label for='edit_reported_fault_btn$id' class=''><i class='bi bi-pencil'></i> <span class='d-none d-md-inline'>Update</span></label>
                                  </button>
-                              
+                                 <a class='btn btn-danger del_btn mb-2' id='del_btn' href='#' title='Delete' data-url='reported_faults' data-delete='$id' data-name='delete this reported fault?' title='Delete'><label for='del_btn' class=''><i class='bi bi-trash'></i> <span class='d-none d-md-inline'>Delete</span></label></a>                              
                               </td>
                            </tr>";
                         }
